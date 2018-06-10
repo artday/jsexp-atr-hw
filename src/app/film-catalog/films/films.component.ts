@@ -7,16 +7,12 @@ import { FilmService } from '../film.service';
   styleUrls: ['./films.component.css']
 })
 export class FilmsComponent implements OnInit {
-
-  description: string = 'Middle card description';
+  private films;
   
+  constructor(private filmsService: FilmService) {}
   
-  constructor(filmsService: FilmService) { 
-    
-  }
-  
-  ngOnInit() { 
-    
+  ngOnInit() {
+    this.films = this.filmsService.getAll();
   }
   
 }
