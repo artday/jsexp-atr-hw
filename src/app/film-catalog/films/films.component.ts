@@ -8,7 +8,7 @@ import {Film} from "../film";
   styleUrls: ['./films.component.css']
 })
 export class FilmsComponent implements OnInit {
-  private films: Film[];
+  private films;
   
   constructor(private filmsService: FilmService) {}
   
