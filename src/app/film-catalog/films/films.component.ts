@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FilmService } from '../film.service';
+import {Film} from "../film";
 
 @Component({
   selector: '.films',
@@ -7,7 +8,7 @@ import { FilmService } from '../film.service';
   styleUrls: ['./films.component.css']
 })
 export class FilmsComponent implements OnInit {
-  private films;
+  private films: Film[] ;
   
   constructor(private filmsService: FilmService) {}
   
