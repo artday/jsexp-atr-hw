@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
+import {MatTabsModule} from '@angular/material/tabs';
 
 import { MainComponent } from './main/main.component';
 import { FilmsComponent } from './films/films.component';
@@ -16,7 +17,8 @@ import { TabsComponent } from './tabs/tabs.component';
     FormsModule,
     MatCardModule,
     MatButtonModule,
-    MatGridListModule
+    MatGridListModule,
+    MatTabsModule
   ],
   declarations: [
     MainComponent, 

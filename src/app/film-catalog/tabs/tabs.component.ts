@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FilmService} from "../film.service";
 
 @Component({
   selector: 'app-tabs',
@@ -6,10 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tabs.component.css']
 })
 export class TabsComponent implements OnInit {
-
-  constructor() { }
+  films;
+  constructor(private filmService: FilmService) { }
 
   ngOnInit() {
+    this.films = this.filmService.getAll();
   }
-
 }
