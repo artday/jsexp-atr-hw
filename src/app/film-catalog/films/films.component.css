@@ -1,6 +1,52 @@
-.example-card {
-    max-width: 400px;
-  }
+.container, .card, mat-card, .year{
+    box-sizing: border-box;
+}
+.container {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 15px auto;
+}
+.card{
+    max-width: 350px;
+    padding: 15px;
+}
+mat-card{
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    max-width: 100%;
+    text-align: left;
+    height: 100%;
+    padding-top: 0;
+}
+mat-card span.year{
+    left: 0;
+    box-sizing: border-box;
+    position: absolute;
+    background: rgba(63, 81, 181, 0.7);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    font-size: 14px;
+}
 
+mat-card-content{
+    flex: 1 0 auto;
+    font-size: 0.8rem;
+    line-height: 1.2rem;
+}
 
-  div {color: red}
+mat-card-actions{
+    align-self: flex-end;
+}
+
+@media (min-width: 768px){
+    .container>.card{
+        flex-basis: calc(100%/3);
+    }
+}
