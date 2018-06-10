@@ -5,6 +5,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
 import {MatTabsModule} from '@angular/material/tabs';
+import {SharedModule} from "./../shared/shared.module";
 
 import { MainComponent } from './main/main.component';
 import { FilmsComponent } from './films/films.component';
@@ -18,7 +19,8 @@ import { TabsComponent } from './tabs/tabs.component';
     MatCardModule,
     MatButtonModule,
     MatGridListModule,
-    MatTabsModule
+    MatTabsModule,
+    SharedModule
   ],
   declarations: [
     MainComponent, 
