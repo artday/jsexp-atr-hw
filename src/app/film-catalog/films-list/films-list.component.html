@@ -6,9 +6,10 @@
                 <span class="example-spacer"></span>
                 <div>
                     <mat-form-field>
-                        <mat-select placeholder="Сортировка">
-                            <mat-option [value]="ASC">По алфавиту: A-Z</mat-option>
-                            <mat-option [value]="DESC">По алфавиту: Z-A </mat-option>
+                        <mat-select [(value)]="selected" (selectionChange)="doSort(selected)" placeholder="Сортировка">
+                            <mat-option *ngFor="let sort of sorting" [value]="sort.value">
+                                {{ sort.viewValue }}
+                            </mat-option>
                         </mat-select>
                     </mat-form-field>
                 </div>
