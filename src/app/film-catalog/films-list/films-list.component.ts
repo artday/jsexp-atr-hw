@@ -8,10 +8,14 @@ import {Film} from '../film';
   styleUrls: ['./films-list.component.css']
 })
 export class FilmsListComponent implements OnInit {
+
+  /* Array of films */
   private films: Film[];
 
-  /* MatSelect. */
+  /* MatSelect. current selected option*/
   selected: string;
+
+  /* MatSelect. Selection options */
   sorting = [
     {value: 'default', viewValue: 'По умолчанию'},
     {value: 'asc', viewValue: 'По алфавиту: A-Z'},
@@ -20,15 +24,14 @@ export class FilmsListComponent implements OnInit {
   
   constructor(private filmsService: FilmService) {}
 
+  /* Sorting by film.property with order [asc,dsc,default] */
   doSort(order){
     (order === 'default') ?
       this.films.sort(this.compareValues('id', order)) :
       this.films.sort(this.compareValues('name', order));
   }
 
-  /*
-   *  Unique comparison function for sorting
-   */
+  /*  Unique comparison function for sorting */
   compareValues (key, order='asc') {
     return (a, b) => {
       if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) { return 0; }
@@ -46,6 +49,7 @@ export class FilmsListComponent implements OnInit {
   }
   
   ngOnInit() {
+    /* load all films from service */
     this.films = this.filmsService.getAll();
   }
   

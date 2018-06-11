@@ -8,6 +8,7 @@ import {Film} from '../film';
 })
 export class FilmItemComponent implements OnInit {
   @Input('data') film: Film;
+
   constructor() { }
 
   ngOnInit() {
