@@ -1,3 +1,24 @@
+.example-card {
+    max-width: 300px;
+}
+.menu-card {
+    padding: 0px;
+}
+.menu-toolbar {
+    background-color: white;
+}
+.example-spacer {
+    flex: 1 1 auto;
+}
+mat-toolbar-row{
+    height: auto;
+    padding: 8px 16px;
+}
+mat-toolbar mat-form-field{
+    font-size: 1rem;
+    width: 160px;
+}
+
 .row{
     justify-content: center;
     margin-bottom: 3rem;
