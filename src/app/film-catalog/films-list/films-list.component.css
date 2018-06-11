@@ -3,8 +3,11 @@
 }
 .menu-card {
     padding: 0px;
+    max-width: 1050px;
+    margin: 0 auto;
 }
 .menu-toolbar {
+    font-size: 1rem;
     background-color: white;
 }
 .example-spacer {
@@ -12,14 +15,15 @@
 }
 mat-toolbar-row{
     height: auto;
-    padding: 8px 16px;
+    padding: 8px 24px;
 }
 mat-toolbar mat-form-field{
-    font-size: 1rem;
+    font-size: 0.9rem;
     width: 160px;
 }
 
 .row{
     justify-content: center;
+    margin-top: 2rem;
     margin-bottom: 3rem;
 }

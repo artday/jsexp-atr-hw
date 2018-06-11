@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FilmService } from '../film.service';
-import {Film} from "../film";
+import {Film} from '../film';
 
 @Component({
   selector: '.films',
@@ -8,7 +8,7 @@ import {Film} from "../film";
   styleUrls: ['./films-list.component.css']
 })
 export class FilmsListComponent implements OnInit {
-  private films;
+  private films: Film[];
 
   sorting = [
     {value: 'default', viewValue: 'По умолчанию'},
