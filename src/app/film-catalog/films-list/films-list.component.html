@@ -3,7 +3,8 @@
     <mat-card class="menu-card">
         <mat-toolbar class="menu-toolbar">
             <mat-toolbar-row>
-                <span>В избранное добавлено: {{favorCnt()}} элементов</span>
+                <span *ngIf="favorCnt(); else noFavorits">В избранное добавлено: {{favorCnt()}} элементов</span>
+                <ng-template #noFavorits><span>У вас нет избранного</span></ng-template>
                 <span class="example-spacer"></span>
                 <div>
                     <mat-form-field>
