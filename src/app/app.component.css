@@ -1,7 +1,11 @@
 .example-icon {
     padding: 0 5px;
-  }
-  
+}
+
 .example-spacer {
     flex: 1 1 auto;
+}
+
+.main-wrapper{
+    padding-top: 2rem;
 }

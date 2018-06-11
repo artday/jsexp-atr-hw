@@ -1,0 +1,32 @@
+<div class="container">
+
+    <mat-card class="menu-card">
+        <mat-toolbar class="menu-toolbar">
+            <mat-toolbar-row>
+                <span>В избранное добавлено: {{favorCnt()}} элементов</span>
+                <span class="example-spacer"></span>
+                <div>
+                    <mat-form-field>
+                        <mat-select [(value)]="selected" (selectionChange)="doSort(selected)" placeholder="Сортировка">
+                            <mat-option *ngFor="let sort of sorting" [value]="sort.value">
+                                {{ sort.viewValue }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </mat-toolbar-row>
+        </mat-toolbar>
+    </mat-card>
+
+    <div class="row">
+        <film-item
+                [data]="film"
+                [favorite]= "isFavorite(film.id)"
+                (favorEmit)="filmFavorToggle($event)"
+                *ngFor="let film of films">
+        </film-item>
+    </div>
+
+</div>
+
+

@@ -1,12 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MainComponent } from './main/main.component';
-import { FilmsComponent } from './films/films.component';
 import { FormsModule } from '@angular/forms';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatGridListModule } from '@angular/material/grid-list';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatSelectModule, MatToolbarModule} from "@angular/material";
+import {SharedModule} from "../shared/shared.module";
+
+import { MainComponent } from './main/main.component';
+import { FilmsListComponent } from './films-list/films-list.component';
 import { DetailsComponent } from './details/details.component';
-import {MatCardModule} from '@angular/material/card';
-import {MatButtonModule} from '@angular/material/button';
-import {MatGridListModule} from '@angular/material/grid-list';
+import { TabsComponent } from './tabs/tabs.component';
+import { FilmItemComponent } from './film-item/film-item.component';
 
 @NgModule({
   imports: [
@@ -14,12 +20,18 @@ import {MatGridListModule} from '@angular/material/grid-list';
     FormsModule,
     MatCardModule,
     MatButtonModule,
-    MatGridListModule
+    MatGridListModule,
+    MatTabsModule,
+    MatSelectModule,
+    MatToolbarModule,
+    SharedModule
   ],
   declarations: [
     MainComponent, 
-    FilmsComponent, 
-    DetailsComponent
+    FilmsListComponent,
+    DetailsComponent,
+    TabsComponent,
+    FilmItemComponent
   ]
 })
 export class FilmCatalogModule { }
