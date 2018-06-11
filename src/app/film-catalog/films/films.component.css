@@ -3,6 +3,7 @@
 }
 .row{
     justify-content: center;
+    margin-bottom: 3rem;
 }
 .film-card{
     max-width: 300px;
@@ -44,6 +45,6 @@ mat-card-actions{
 
 @media (min-width: 768px){
     .film-card{
-        flex-basis: calc(100%/3);
+
     }
 }
