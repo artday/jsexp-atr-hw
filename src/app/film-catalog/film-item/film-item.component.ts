@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, Output, EventEmitter} from '@angular/core';
 import {Film} from '../film';
 
 @Component({
@@ -6,12 +6,18 @@ import {Film} from '../film';
   templateUrl: './film-item.component.html',
   styleUrls: ['./film-item.component.css']
 })
-export class FilmItemComponent implements OnInit {
+export class FilmItemComponent {
   @Input('data') film: Film;
+  @Input() favorite;
+  @Output() favorEmit = new EventEmitter();
 
-  constructor() { }
-
-  ngOnInit() {
+  /*
+   * toggle favorite value true|false;
+   * emit to parent current item id & favorite value
+   */
+  favoriteToggle(){
+    this.favorite = !this.favorite;
+    this.favorEmit.emit({id: this.id, favorite: this.favorite});
   }
 
   /* Getters for film properties */

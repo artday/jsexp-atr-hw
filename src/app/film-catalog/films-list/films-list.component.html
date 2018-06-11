@@ -3,7 +3,7 @@
     <mat-card class="menu-card">
         <mat-toolbar class="menu-toolbar">
             <mat-toolbar-row>
-                <span>В избранное добавлено: 5 элементов</span>
+                <span>В избранное добавлено: {{favorCnt()}} элементов</span>
                 <span class="example-spacer"></span>
                 <div>
                     <mat-form-field>
@@ -19,7 +19,12 @@
     </mat-card>
 
     <div class="row">
-        <film-item [data]="film" *ngFor="let film of films"></film-item>
+        <film-item
+                [data]="film"
+                [favorite]= "isFavorite(film.id)"
+                (favorEmit)="filmFavorToggle($event)"
+                *ngFor="let film of films">
+        </film-item>
     </div>
 
 </div>
