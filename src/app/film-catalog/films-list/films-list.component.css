@@ -25,10 +25,11 @@ mat-toolbar mat-form-field{
 .row{
     justify-content: center;
     align-items: stretch;
-    margin-top: 2rem;
+    margin-top: 1rem;
     margin-bottom: 3rem;
 }
 
 film-item{
-    padding: 15px;
+    /*padding: 15px;*/
+    padding: 24px 36px;
 }
