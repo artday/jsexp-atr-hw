@@ -10,6 +10,8 @@ import {Film} from '../film';
 export class FilmsListComponent implements OnInit {
   private films: Film[];
 
+  /* MatSelect. */
+  selected: string;
   sorting = [
     {value: 'default', viewValue: 'По умолчанию'},
     {value: 'asc', viewValue: 'По алфавиту: A-Z'},
