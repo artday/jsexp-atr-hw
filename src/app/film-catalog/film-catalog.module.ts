@@ -8,7 +8,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {SharedModule} from "../shared/shared.module";
 
 import { MainComponent } from './main/main.component';
-import { FilmsComponent } from './films/films.component';
+import { FilmsListComponent } from './films-list/films-list.component';
 import { DetailsComponent } from './details/details.component';
 import { TabsComponent } from './tabs/tabs.component';
 import { FilmItemComponent } from './film-item/film-item.component';
@@ -25,7 +25,7 @@ import { FilmItemComponent } from './film-item/film-item.component';
   ],
   declarations: [
     MainComponent, 
-    FilmsComponent, 
+    FilmsListComponent,
     DetailsComponent,
     TabsComponent,
     FilmItemComponent

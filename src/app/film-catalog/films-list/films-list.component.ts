@@ -4,10 +4,10 @@ import {Film} from "../film";
 
 @Component({
   selector: '.films',
-  templateUrl: './films.component.html',
-  styleUrls: ['./films.component.css']
+  templateUrl: './films-list.component.html',
+  styleUrls: ['./films-list.component.css']
 })
-export class FilmsComponent implements OnInit {
+export class FilmsListComponent implements OnInit {
   private films;
   
   constructor(private filmsService: FilmService) {}
