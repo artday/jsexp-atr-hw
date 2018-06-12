@@ -37,7 +37,7 @@
             <film-item [data]="film" *ngFor="let film of Films"></film-item>
         </div>
         <div class="row">
-            <button mat-raised-button color="primary" (click)="loadFilms()" [disabled]="(filteredFilms.length - filmsOnPage)<=0">
+            <button mat-raised-button color="primary" (click)="loadFilms(3)" [disabled]="!((filteredFilms.length - filmsOnPage)>0)">
                 Показать еще
             </button>
         </div>
