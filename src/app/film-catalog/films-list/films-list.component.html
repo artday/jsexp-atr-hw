@@ -34,12 +34,7 @@
     <ng-template #noFilms><div class="row"><p>По запросу "{{ query.value }}"  ничего не найдено...</p></div></ng-template>
     <section *ngIf="Films.length; else noFilms">
         <div class="row">
-            <film-item
-                    [data]="film"
-                    [favorite]= "isFavorite(film.id)"
-                    (favorEmit)="filmFavorToggle($event)"
-                    *ngFor="let film of Films">
-            </film-item>
+            <film-item [data]="film" *ngFor="let film of Films"></film-item>
         </div>
         <div class="row">
             <button mat-raised-button color="primary" (click)="loadFilms()" [disabled]="(filteredFilms.length - filmsOnPage)<=0">

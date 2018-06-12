@@ -8,16 +8,10 @@ import {Film} from '../film';
 })
 export class FilmItemComponent {
   @Input('data') film: Film;
-  @Input() favorite;
-  @Output() favorEmit = new EventEmitter();
 
-  /*
-   * toggle favorite value true|false;
-   * emit to parent current item id & favorite value
-   */
+  /* toggle favorite value true|false; */
   favoriteToggle(){
-    this.favorite = !this.favorite;
-    this.favorEmit.emit({id: this.id, favorite: this.favorite});
+    this.film.favorite = !this.film.favorite;
   }
 
   /* Getters for film properties */
@@ -26,4 +20,5 @@ export class FilmItemComponent {
   get year() { return this.film.year; }
   get imgUrl() {return this.film.imgUrl; }
   get description() { return this.film.description; }
+  get favorite() { return this.film.favorite; }
 }
