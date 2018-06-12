@@ -33,8 +33,8 @@ export class FilmsListComponent implements OnInit {
   /* Sorting by film.property with order [asc,dsc,default] */
   doSort(order:string){
     (order === 'default' || order === '') ?
-      (this.films.sort(this.compareValues('id', order)) , this.selected = '') :
-      this.films.sort(this.compareValues('name', order));
+      (this.filteredFilms.sort(this.compareValues('id', order)) , this.selected = '') :
+      this.filteredFilms.sort(this.compareValues('name', order));
   }
 
   /*  Unique comparison function for sorting */
