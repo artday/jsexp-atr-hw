@@ -1,13 +1,16 @@
 import { Injectable } from '@angular/core';
 import {Film} from './film';
-// import {Favorite} from "./favorite";
 
 @Injectable({
   providedIn: 'root'
 })
 export class FilmService {
-  constructor() {}
-  
+
+  /*  Mock data of films
+   *  Имеет смысл держать список id избранных фильммов отдельно,
+   *  в отдельном сервисе... так как это отдельный endpoint...
+   *  в сервисе что то вроде такого: getFavorites(this.user.id){  }
+   */
   private films: Film [] = [
     {id: 1,name: "Тор: Рагнарёк", year: "2017", imgUrl: "https://image.tmdb.org/t/p/w300_and_h450_bestv2/2NEzIdBAgm4kSYXF4OH86qs3a0u.jpg", description: "Вернувшись в Асгард в поисках таинственного врага, ведущего охоту на Камни Бесконечности, Тор обнаруживает, что действия его брата Локи, захватившего трон Асгарда, привели к приближению наиболее страшного события — Рагнарёка.", favorite: false,},
     {id: 2, name: "Чудо-женщина ", year: "2017", imgUrl: "https://image.tmdb.org/t/p/w300_and_h450_bestv2/fMnMonAyK3nzp1P1odIFzYoSvYe.jpg", description: "Перед тем как стать Чудо-Женщиной, она была Дианой — принцессой амазонок, обученной быть непобедимой воительницей. И когда на берегах огражденного ото внешнего мира райского острова, который служил ей родиной, терпит крушение американский пилот и рассказывает о серьезном конфликте, бушующем во внешнем мире, Диана покидает свой дом, чтобы справиться с этой угрозой", favorite: true},

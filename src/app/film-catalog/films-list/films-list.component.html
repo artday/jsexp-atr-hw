@@ -1,26 +1,19 @@
 <div class="container">
-
     <mat-card class="menu-card">
         <mat-toolbar class="menu-toolbar">
             <mat-toolbar-row>
                 <span *ngIf="favorCnt(); else noFavorits">В избранное добавлено: {{favorCnt()}} элементов</span>
                 <ng-template #noFavorits><span>У вас нет избранного</span></ng-template>
                 <span class="example-spacer"></span>
-
-                <!--<input matInput type="text" #query (keyup)="filter(query.value)" placeholder="Search...">-->
                 <mat-form-field class="search-form-field">
-                    <input matInput #query
-                           type="text" placeholder="Поиск..."
-                           (keyup)="filter(query.value)"/>
+                    <input matInput #query type="text" placeholder="Поиск..." (keyup)="filter(query.value)"/>
                     <button mat-button *ngIf="query.value" matSuffix mat-icon-button aria-label="Clear" (click)="query.value=''; filter()">
                         <mat-icon>close</mat-icon>
                     </button>
                 </mat-form-field>
-
                 <div>
                     <mat-form-field>
-                        <mat-select [(value)]="selected"
-                            (selectionChange)="doSort(selected)" placeholder="Сортировка">
+                        <mat-select [(value)]="selected" (selectionChange)="doSort(selected)" placeholder="Сортировка">
                             <mat-option *ngFor="let sort of sorting" [value]="sort.value">
                                 {{ sort.viewValue }}
                             </mat-option>
@@ -30,7 +23,6 @@
             </mat-toolbar-row>
         </mat-toolbar>
     </mat-card>
-
     <ng-template #noFilms><div class="row"><p>По запросу "{{ query.value }}"  ничего не найдено...</p></div></ng-template>
     <section *ngIf="Films.length; else noFilms">
         <div class="row">
@@ -42,7 +34,4 @@
             </button>
         </div>
     </section>
-
 </div>
-
-

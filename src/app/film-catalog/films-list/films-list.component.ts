@@ -8,7 +8,6 @@ import {Film} from '../film';
   styleUrls: ['./films-list.component.css']
 })
 export class FilmsListComponent implements OnInit {
-
   /* Array of films */
   private films: Film[];
 
@@ -61,6 +60,7 @@ export class FilmsListComponent implements OnInit {
       this.films.filter(film => film.name.toLowerCase().includes(query.toLowerCase())) : this.films;
   }
 
+  /* Increment count of displayed films */
   loadFilms(cnt: number=3){
     this.filmsOnPage += cnt;
   }
