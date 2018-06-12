@@ -12,6 +12,12 @@ export class FilmsListComponent implements OnInit {
   /* Array of films */
   private films: Film[];
 
+  /* Filtered Array of films */
+  private filteredFilms: Film[];
+
+  /* Count of currently displayed films */
+  private filmsOnPage: number = 3;
+
   /* MatSelect. current selected option*/
   selected: string;
 
@@ -25,9 +31,9 @@ export class FilmsListComponent implements OnInit {
   constructor(private filmsService: FilmService) {}
 
   /* Sorting by film.property with order [asc,dsc,default] */
-  doSort(order){
-    (order === 'default') ?
-      this.films.sort(this.compareValues('id', order)) :
+  doSort(order:string){
+    (order === 'default' || order === '') ?
+      (this.films.sort(this.compareValues('id', order)) , this.selected = '') :
       this.films.sort(this.compareValues('name', order));
   }
 
@@ -59,9 +65,24 @@ export class FilmsListComponent implements OnInit {
     e.favorite ? this.filmsService.setFavor(e.id) :
       this.filmsService.removeFavor(e.id);
   }
+
+  /* save filtered films  */
+  filter(query?: string) {
+    this.filteredFilms = (query) ?
+      this.films.filter(film => film.name.toLowerCase().includes(query.toLowerCase())) : this.films;
+  }
+
+  loadFilms(cnt: number=3){
+    this.filmsOnPage += cnt;
+  }
+
+  /* Getter for App Films */
+  get Films(){
+    return this.filteredFilms.slice(0, this.filmsOnPage)
+  }
   
   ngOnInit() {
     /* load all films from service */
-    this.films = this.filmsService.getAll();
+    this.films = this.filteredFilms = this.filmsService.getAll();
   }
 }

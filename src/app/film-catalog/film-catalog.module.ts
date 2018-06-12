@@ -5,7 +5,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
 import {MatTabsModule} from '@angular/material/tabs';
-import {MatSelectModule, MatToolbarModule} from "@angular/material";
+import {MatSelectModule, MatToolbarModule, MatInputModule} from "@angular/material";
+import {MatIconModule} from '@angular/material/icon';
+import {FormsModule} from '@angular/forms';
 import {SharedModule} from "../shared/shared.module";
 
 import { MainComponent } from './main/main.component';
@@ -24,6 +26,8 @@ import { FilmItemComponent } from './film-item/film-item.component';
     MatTabsModule,
     MatSelectModule,
     MatToolbarModule,
+    MatIconModule,
+    MatInputModule,
     SharedModule
   ],
   declarations: [

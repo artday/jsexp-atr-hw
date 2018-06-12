@@ -31,5 +31,11 @@ mat-toolbar mat-form-field{
 
 film-item{
     /*padding: 15px;*/
-    padding: 24px 36px;
+    /*padding: 24px 36px;*/
+    padding: 10px;
+}
+
+.search-form-field {
+    width: 250px!important;
+    padding: 0 1.5rem;
 }
