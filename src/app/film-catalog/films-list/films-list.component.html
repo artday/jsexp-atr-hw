@@ -13,7 +13,7 @@
                 </mat-form-field>
                 <div>
                     <mat-form-field>
-                        <mat-select [(value)]="selected" (selectionChange)="doSort(selected)" placeholder="Сортировка">
+                        <mat-select [(value)]="selected" (selectionChange)="doSort()" placeholder="Сортировка">
                             <mat-option *ngFor="let sort of sorting" [value]="sort.value">
                                 {{ sort.viewValue }}
                             </mat-option>
@@ -23,13 +23,14 @@
             </mat-toolbar-row>
         </mat-toolbar>
     </mat-card>
+
     <ng-template #noFilms><div class="row"><p>По запросу "{{ query.value }}"  ничего не найдено...</p></div></ng-template>
     <section *ngIf="Films.length; else noFilms">
         <div class="row">
             <film-item [data]="film" *ngFor="let film of Films"></film-item>
         </div>
         <div class="row">
-            <button mat-raised-button color="primary" (click)="loadFilms(3)" [disabled]="!((filteredFilms.length - filmsOnPage)>0)">
+            <button mat-raised-button color="primary" (click)="loadFilms()" [disabled]="!((filteredFilms.length - filmsOnPage)>0)">
                 Показать еще
             </button>
         </div>

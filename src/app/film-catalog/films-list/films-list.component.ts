@@ -30,10 +30,10 @@ export class FilmsListComponent implements OnInit {
   constructor(private filmsService: FilmService) {}
 
   /* Sorting by film.property with order [asc,dsc,default] */
-  doSort(order:string){
-    (order === 'default' || order === '') ?
-      (this.filteredFilms.sort(this.compareValues('id', order)) , this.selected = '') :
-      this.filteredFilms.sort(this.compareValues('name', order));
+  doSort(){
+    (this.selected === 'default' || this.selected === '') ?
+      (this.filteredFilms.sort(this.compareValues('id', this.selected)) , this.selected = '') :
+      this.filteredFilms.sort(this.compareValues('name', this.selected));
   }
 
   /*  Unique comparison function for sorting */
@@ -67,7 +67,7 @@ export class FilmsListComponent implements OnInit {
 
   /* Getter for App Films */
   get Films(){
-    return this.filteredFilms.slice(0, this.filmsOnPage)
+    return this.filteredFilms.slice(0, this.filmsOnPage);
   }
   
   ngOnInit() {
