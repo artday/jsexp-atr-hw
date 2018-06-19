@@ -1,0 +1,46 @@
+<div class="container">
+    <mat-card class="menu-card">
+        <mat-toolbar class="menu-toolbar">
+            <mat-toolbar-row>
+
+                <div>
+                    <mat-form-field>
+                        <mat-select [(value)]="selectedService" (selectionChange)="changeService()">
+                            <mat-option *ngFor="let s of services" [value]="s.value">
+                                {{ s.label }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <search (searchChanged)="filter($event)"></search>
+
+            </mat-toolbar-row>
+        </mat-toolbar>
+    </mat-card>
+
+    <!--<ng-container *ngIf="preload">-->
+    <!--<img [ngStyle]="{'display': preload ? 'block': 'none' }" src="https://www.themoviedb.org/stylesheets/kendo-2018.1.221/Material/rolling-24px.svg">-->
+    <!--</ng-container>-->
+
+    <ng-template #noResult><div class="row"><p>По вашему запросу ничего не найдено...</p></div></ng-template>
+    <section *ngIf="filtered.length; else noResult">
+        <div class="row" [ngSwitch]="selectedService">
+            <ng-container *ngSwitchCase="'actors'">
+                <person-item [data1]="person" *ngFor="let person of filtered" ></person-item>
+            </ng-container>
+            <ng-container *ngSwitchDefault>
+                <film-item [data]="film" *ngFor="let film of filtered"></film-item>
+            </ng-container>
+        </div>
+
+        <div class="row">
+            <button mat-raised-button color="primary" (click)="getNextPage()"
+                    [disabled]="filtered.length<results.length">
+                Показать еще
+            </button>
+        </div>
+
+    </section>
+
+</div>
