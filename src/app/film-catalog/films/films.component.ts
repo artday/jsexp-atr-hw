@@ -10,18 +10,29 @@ import {PersonService} from "../../services/person.service";
 })
 export class FilmsComponent implements OnInit, AfterViewInit {
 
+  /* TODO: preload based on  ngAfterViewInit */
+  preload = true;
+
   ngAfterViewInit(): void {
     this.preload = false;
   }
 
-  preload = true;
+  /* Raw Data from endpoint */
   private _data;
+
+  /* data.results */
   public results = [];
+
+  /* additional endpoint API params.  object {key:'value',}*/
   private params = {};
 
+  /* filtered results array */
   private filteredResult = [];
 
+  /*  selected service by mat-select  */
   selectedService = 'films';
+
+  /* mat-select options for services */
   services=[
     {value: 'films', label: 'Фильмы', service: this.filmService, searchProperty: 'title'},
     {value: 'actors', label: 'Актеры', service: this.personService, searchProperty: 'name'},
@@ -29,6 +40,7 @@ export class FilmsComponent implements OnInit, AfterViewInit {
 
   constructor(private filmService: FilmService, private personService: PersonService) { }
 
+  /* Reset values on changing service */
   changeService(){
     this._data = this.results = [];
     this.params['page'] = this.page+1;
@@ -36,18 +48,22 @@ export class FilmsComponent implements OnInit, AfterViewInit {
     this.getData();
   }
 
+  /* get mat-select params array for currently selected service  */
   private get currentServiceParams(){
     return this.services.find(obj => obj.value === this.selectedService);
   }
 
+  /* get current service from mat-select params array */
   private get currentService(){
     return <DataService>this.currentServiceParams['service'];
   }
 
+  /* get field name of name/title property for filtering */
   private get searchProperty(){
     return this.currentServiceParams['searchProperty'];
   }
 
+  /* get data from endpoint response */
   getData(){
     this.currentService.getAll(this.params).subscribe(data => {
       this._data = data;
@@ -55,21 +71,25 @@ export class FilmsComponent implements OnInit, AfterViewInit {
     });
   }
 
+  /* get data from next page */
   getNextPage(){
     this.params['page'] = this.page+1;
     this.getData();
   }
 
+  /* current page property of results */
   get page(){
     return this._data.page;
   }
 
+  /* save filtered data to filteredResult */
   filter(query) {
     this.filteredResult = (query) ?
       this.results.filter(
         item => item[this.searchProperty].toLowerCase().includes(query.toLowerCase())) : this.results;
   }
 
+  /* getter for filtered data  */
   get filtered(){
     return this.filteredResult;
   }
