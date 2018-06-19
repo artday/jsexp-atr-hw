@@ -19,11 +19,11 @@
         </mat-toolbar>
     </mat-card>
 
-    <!--<ng-container *ngIf="preload">-->
-    <!--<img [ngStyle]="{'display': preload ? 'block': 'none' }" src="https://www.themoviedb.org/stylesheets/kendo-2018.1.221/Material/rolling-24px.svg">-->
-    <!--</ng-container>-->
+    <div class="row" *ngIf="preload" >
+        <img  src="https://www.themoviedb.org/stylesheets/kendo-2018.1.221/Material/rolling-24px.svg">
+    </div>
 
-    <ng-template #noResult><div class="row"><p>По вашему запросу ничего не найдено...</p></div></ng-template>
+    <ng-template #noResult *ngIf="!preload"><div class="row"><p>По вашему запросу ничего не найдено...</p></div></ng-template>
     <section *ngIf="filtered.length; else noResult">
         <div class="row" [ngSwitch]="selectedService">
             <ng-container *ngSwitchCase="'actors'">
@@ -33,7 +33,6 @@
                 <film-item [data]="film" *ngFor="let film of filtered"></film-item>
             </ng-container>
         </div>
-
         <div class="row">
             <button mat-raised-button color="primary" (click)="getNextPage()"
                     [disabled]="filtered.length<results.length">

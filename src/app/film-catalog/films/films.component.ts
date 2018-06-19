@@ -10,12 +10,12 @@ import {PersonService} from "../../services/person.service";
 })
 export class FilmsComponent implements OnInit, AfterViewInit {
 
-  /* TODO: preload based on  ngAfterViewInit */
-  preload = true;
-
+  /* you can't  use ngAfterViewInit with template binding  */
   ngAfterViewInit(): void {
-    this.preload = false;
+    // this.preload = false;
   }
+
+  preload = true;
 
   /* Raw Data from endpoint */
   private _data;
@@ -68,6 +68,7 @@ export class FilmsComponent implements OnInit, AfterViewInit {
     this.currentService.getAll(this.params).subscribe(data => {
       this._data = data;
       this.filteredResult = this.results = this.results.concat(data['results']);
+      this.preload = false;
     });
   }
 
