@@ -11,6 +11,9 @@ body {
     /*text-align: center;*/
 /*}*/
 
+*{
+    box-sizing: border-box;
+}
 .container, .row, .coll{
     box-sizing: border-box;
 }

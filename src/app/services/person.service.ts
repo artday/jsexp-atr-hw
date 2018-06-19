@@ -3,11 +3,10 @@ import {HttpClient} from "@angular/common/http";
 import {DataService} from "./data.service";
 
 @Injectable()
-export class FilmService extends DataService {
-
-  params = { language: 'ru-RU', sort_by: '', page: 1, year: '' };
+export class PersonService extends DataService{
+  params = { language: 'ru-RU', sort_by: '', page: 1};
 
   constructor(http: HttpClient) {
-    super('https://api.themoviedb.org/3/discover/movie', http);
+    super('https://api.themoviedb.org/3/person/popular', http);
   }
 }

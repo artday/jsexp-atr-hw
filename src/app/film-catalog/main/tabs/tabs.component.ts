@@ -1,16 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import {FilmService} from "../film.service";
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-tabs',
   templateUrl: './tabs.component.html',
   styleUrls: ['./tabs.component.css']
 })
-export class TabsComponent implements OnInit {
-  films;
-  constructor(private filmService: FilmService) { }
+export class TabsComponent {
 
-  ngOnInit() {
-    this.films = this.filmService.getAll();
-  }
 }
