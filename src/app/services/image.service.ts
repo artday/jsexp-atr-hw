@@ -20,7 +20,7 @@ export class ImageService extends DataService{
     super('https://api.themoviedb.org/3', http);
   }
 
-  indexImgUrl( type:string, size:string='sl', img:string){
+  indexImgUrl( type: string, size: string = 'sl', img: string){
     return (type && this[type] && img)?
       `${this.baseUrl}/${this[type][size]}${img}` :
       this.blankImg;

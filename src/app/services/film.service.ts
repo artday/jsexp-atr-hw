@@ -4,7 +4,6 @@ import {DataService} from "./data.service";
 
 @Injectable()
 export class FilmService extends DataService {
-
   params = { language: 'ru-RU', sort_by: '', page: 1, year: '' };
 
   constructor(http: HttpClient) {
