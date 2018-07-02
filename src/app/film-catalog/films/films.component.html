@@ -2,7 +2,6 @@
     <mat-card class="menu-card">
         <mat-toolbar class="menu-toolbar">
             <mat-toolbar-row>
-
                 <div>
                     <mat-form-field>
                         <mat-select [(value)]="selectedService" (selectionChange)="changeService()">
@@ -12,17 +11,13 @@
                         </mat-select>
                     </mat-form-field>
                 </div>
-
                 <search (searchChanged)="filter($event)"></search>
-
             </mat-toolbar-row>
         </mat-toolbar>
     </mat-card>
-
     <div class="row" *ngIf="preload" >
         <img  src="https://www.themoviedb.org/stylesheets/kendo-2018.1.221/Material/rolling-24px.svg">
     </div>
-
     <ng-template #noResult *ngIf="!preload"><div class="row"><p>По вашему запросу ничего не найдено...</p></div></ng-template>
     <section *ngIf="filtered.length; else noResult">
         <div class="row" [ngSwitch]="selectedService">
@@ -39,7 +34,5 @@
                 Показать еще
             </button>
         </div>
-
     </section>
-
 </div>

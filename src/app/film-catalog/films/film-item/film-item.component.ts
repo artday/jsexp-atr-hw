@@ -1,6 +1,5 @@
-import {Component, Input, Output, EventEmitter, OnChanges, SimpleChanges} from '@angular/core';
+import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {ImageService} from "../../../services/image.service";
-
 
 @Component({
   selector: 'film-item',
@@ -10,12 +9,10 @@ import {ImageService} from "../../../services/image.service";
 export class FilmItemComponent implements OnChanges{
   imgType = 'poster';
   imgSize = 'md';
-
   indexImg:string;
-
   @Input('data') film;
 
-  constructor(private imgService: ImageService){}
+  constructor(protected imgService: ImageService){}
 
   ngOnChanges(changes: SimpleChanges): void {
     this.indexImg = this.imgService.indexImgUrl(this.imgType, this.imgSize, this.film['poster_path']);
