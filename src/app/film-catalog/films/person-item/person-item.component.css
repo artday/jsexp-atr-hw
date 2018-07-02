@@ -1,8 +1,7 @@
 .card, mat-card, .year{
     box-sizing: border-box;
 }
-.film-card{
-    max-width: 300px;
+.person-card{
     height: 100%
 }
 mat-card{

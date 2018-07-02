@@ -10,10 +10,16 @@ import {MatIconModule} from '@angular/material/icon';
 import {SharedModule} from "../shared/shared.module";
 
 import { MainComponent } from './main/main.component';
-import { FilmsListComponent } from './films-list/films-list.component';
-import { DetailsComponent } from './details/details.component';
-import { TabsComponent } from './tabs/tabs.component';
-import { FilmItemComponent } from './film-item/film-item.component';
+import { FilmsComponent } from './films/films.component';
+import { TabsComponent } from './main/tabs/tabs.component';
+import { FilmItemComponent } from './films/film-item/film-item.component';
+import { PersonItemComponent } from './films/person-item/person-item.component';
+import {HttpClientModule} from "@angular/common/http";
+
+import {FilmService} from "../services/film.service";
+import {PersonService} from "../services/person.service";
+import {ImageService} from "../services/image.service";
+import { SearchComponent } from './films/search/search.component';
 
 @NgModule({
   imports: [
@@ -27,14 +33,17 @@ import { FilmItemComponent } from './film-item/film-item.component';
     MatToolbarModule,
     MatIconModule,
     MatInputModule,
-    SharedModule
+    SharedModule,
+    HttpClientModule
   ],
   declarations: [
-    MainComponent, 
-    FilmsListComponent,
-    DetailsComponent,
+    MainComponent,
+    FilmsComponent,
     TabsComponent,
-    FilmItemComponent
-  ]
+    FilmItemComponent,
+    PersonItemComponent,
+    SearchComponent
+  ],
+  providers: [ FilmService, PersonService, ImageService ]
 })
 export class FilmCatalogModule { }
