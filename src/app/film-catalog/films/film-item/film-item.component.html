@@ -3,7 +3,13 @@
     <span class="year">{{release_date | truncate:4:false:''}}</span>
 
     <mat-card-actions>
-      <div><span><mat-icon >bookmark</mat-icon></span></div>
+      <div (click)="markToggle()" class="favorBtn">
+        <span title="Add to BookMarks"  *ngIf="!mark; else removeMark"><mat-icon >bookmark_border</mat-icon></span>
+        <ng-template #removeMark>
+          <span title="Remove from BookMarks"><mat-icon>bookmark</mat-icon></span>
+        </ng-template>
+      </div>
+
       <div (click)="favoriteToggle()" class="favorBtn">
         <span title="Add to favorites" *ngIf="!favorite; else removeFav"><mat-icon>favorite_border</mat-icon></span>
         <ng-template #removeFav>

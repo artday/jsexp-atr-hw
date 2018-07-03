@@ -5,4 +5,5 @@ export class Film{
   indexImg: string;
   release_date: string;
   favorite: boolean = false;
+  mark: boolean = false;
 }

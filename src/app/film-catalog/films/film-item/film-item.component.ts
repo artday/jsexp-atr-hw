@@ -1,7 +1,7 @@
 import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
+import {FavoriteService} from "../../../services/favorite.service";
 import {ImageService} from "../../../services/image.service";
 import {Film} from "../../../models/film";
-import {FavoriteService} from "../../../services/favorite.service";
 
 @Component({
   selector: 'film-item',
@@ -28,10 +28,20 @@ export class FilmItemComponent implements OnChanges{
         .subscribe(() => this.film.favorite = true);
   }
 
+  /* toggle favorite value true|false; */
+  markToggle(){
+    this.film.mark ?
+      this.favService.dellMark(this.film.id)
+        .subscribe(() => this.film.mark = false):
+      this.favService.addMark(this.film.id)
+        .subscribe(() => this.film.mark = true);
+  }
+
   get title(){ return this.film.title }
   get poster(){ return this.film.indexImg }
   get overview(){ return this.film.overview }
   get release_date(){ return this.film.release_date }
   get favorite(){ return this.film.favorite }
+  get mark(){ return this.film.mark }
 
 }
