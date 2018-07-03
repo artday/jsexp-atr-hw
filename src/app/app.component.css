@@ -10,3 +10,7 @@
 .main-wrapper{
     padding-top: 2rem;
 }
+
+mat-toolbar{
+    z-index: 2;
+}

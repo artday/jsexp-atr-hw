@@ -1,5 +1,7 @@
 import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {ImageService} from "../../../services/image.service";
+import {Film} from "../../../models/film";
+import {FavoriteService} from "../../../services/favorite.service";
 
 @Component({
   selector: 'film-item',
@@ -9,16 +11,27 @@ import {ImageService} from "../../../services/image.service";
 export class FilmItemComponent implements OnChanges{
   imgType = 'poster';
   imgSize = 'md';
-  indexImg:string;
-  @Input('data') film;
+  @Input('data') film: Film;
 
-  constructor(protected imgService: ImageService){}
+  constructor(private imgService: ImageService, private favService: FavoriteService){}
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.indexImg = this.imgService.indexImgUrl(this.imgType, this.imgSize, this.film['poster_path']);
+    this.film.indexImg = this.imgService.indexImgUrl(this.imgType, this.imgSize, this.film['poster_path']);
+  }
+
+  /* toggle favorite value true|false; */
+  favoriteToggle(){
+    this.film.favorite ?
+      this.favService.dellFavor(this.film.id)
+        .subscribe(() => this.film.favorite = false):
+      this.favService.addFavor(this.film.id)
+        .subscribe(() => this.film.favorite = true);
   }
 
   get title(){ return this.film.title }
+  get poster(){ return this.film.indexImg }
   get overview(){ return this.film.overview }
   get release_date(){ return this.film.release_date }
+  get favorite(){ return this.film.favorite }
+
 }

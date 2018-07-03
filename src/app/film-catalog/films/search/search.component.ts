@@ -10,7 +10,7 @@ export class SearchComponent{
   @Output() searchChanged = new EventEmitter();
 
   toParent(){
-    this.value.length>3 ?
-      this.searchChanged.emit(this.value) : this.searchChanged.emit('');
+    if(!this.value) this.searchChanged.emit('');
+    if(this.value.length>3) this.searchChanged.emit(this.value);
   };
 }

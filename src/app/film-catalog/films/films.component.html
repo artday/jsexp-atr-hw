@@ -15,22 +15,23 @@
             </mat-toolbar-row>
         </mat-toolbar>
     </mat-card>
-    <div class="row" *ngIf="preload" >
-        <img  src="https://www.themoviedb.org/stylesheets/kendo-2018.1.221/Material/rolling-24px.svg">
+    <div class="row spiner"  [ngClass]="{'loader': !preload}">
+        <mat-spinner></mat-spinner>
+        <!--<img  src="https://www.themoviedb.org/stylesheets/kendo-2018.1.221/Material/rolling-24px.svg">-->
     </div>
-    <ng-template #noResult *ngIf="!preload"><div class="row"><p>По вашему запросу ничего не найдено...</p></div></ng-template>
-    <section *ngIf="filtered.length; else noResult">
+    <ng-template #noResult><div class="row" ><p>По вашему запросу ничего не найдено...</p></div></ng-template>
+    <section *ngIf="results.length; else noResult" [ngClass]="{'loader': preload }">
         <div class="row" [ngSwitch]="selectedService">
             <ng-container *ngSwitchCase="'actors'">
-                <person-item [data1]="person" *ngFor="let person of filtered" ></person-item>
+                <person-item [data1]="person" *ngFor="let person of results" ></person-item>
             </ng-container>
             <ng-container *ngSwitchDefault>
-                <film-item [data]="film" *ngFor="let film of filtered"></film-item>
+                <film-item [data]="film" *ngFor="let film of results"></film-item>
             </ng-container>
         </div>
         <div class="row">
             <button mat-raised-button color="primary" (click)="getNextPage()"
-                    [disabled]="filtered.length<results.length">
+                    [disabled]="!((totalPages - page)>0)">
                 Показать еще
             </button>
         </div>
