@@ -18,7 +18,7 @@
       </div>
     </mat-card-actions>
 
-    <img mat-card-image src="{{poster}}" alt="Photo of {{title}}">
+    <img mat-card-image src="{{poster}}" alt="Photo of {{title}}" (click)="log(film)">
 
     <mat-card-header>
       <mat-card-title><strong>{{title}}</strong></mat-card-title>

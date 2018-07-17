@@ -1,15 +1,24 @@
 <mat-toolbar color="primary">
     <mat-toolbar-row>
-      <span>Film Catalog</span>
-      <span class="example-spacer"></span>
-      <a mat-button 
-        *ngFor="let link of links" 
-        [routerLink]="link.path" 
-        [routerLinkActive]="link.active"> 
-        <mat-icon class="example-icon">{{link.icon}}</mat-icon>{{link.label}}
-    </a>
+        <span>Film Catalog</span>
+        <a mat-button *ngFor="let link of links"  [routerLink]="link.path"  [routerLinkActive]="link.active">
+            <mat-icon class="example-icon">{{link.icon}}</mat-icon>{{link.label}}
+        </a>
+        <span class="example-spacer"></span>
+
+        <ng-template #anonymous> <app-login></app-login> </ng-template>
+
+        <div *ngIf="appUser; else anonymous" class="dropdown">
+            <button mat-button class="dropdown-toggle">{{appUser.name}}</button>
+            <div class="dropdown-menu">
+                <a mat-button href="/1" class="dropdown-item">Favourites</a>
+                <a mat-button href="/2" class="dropdown-item">Book Marks</a>
+                <a mat-button (click)="logout()" class="dropdown-item">Log Out</a>
+            </div>
+        </div>
     </mat-toolbar-row>
-  </mat-toolbar>
+</mat-toolbar>
+
 
   <div class="main-wrapper">
     <router-outlet></router-outlet>

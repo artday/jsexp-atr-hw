@@ -84,6 +84,10 @@ export class FilmsComponent implements OnInit{
     query? this.getData(true): this.getData(false);
   }
 
+  log(){
+    console.log(this.filmService.favorites);
+  }
+
   ngOnInit() {
     this.preload = true;
     this.getData();

@@ -36,7 +36,7 @@ import {FavoriteService} from "../services/favorite.service";
     MatIconModule,
     MatInputModule,
     SharedModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   declarations: [
     MainComponent,
