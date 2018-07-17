@@ -17,7 +17,7 @@ export class ImageService extends DataService{
   };
 
   constructor(http: HttpClient) {
-    super('https://api.themoviedb.org/3', http);
+    super('', 'https://api.themoviedb.org/3', http);
   }
 
   indexImgUrl( type: string, size: string = 'sl', img: string){

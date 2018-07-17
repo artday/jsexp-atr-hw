@@ -8,26 +8,17 @@ import {PersonService} from "../../services/person.service";
   templateUrl: './films.component.html',
   styleUrls: ['./films.component.css']
 })
-export class FilmsComponent implements OnInit, AfterViewInit {
-
-  /* you can't  use ngAfterViewInit with template binding  */
-  ngAfterViewInit(): void {
-    // this.preload = false;
-  }
-
+export class FilmsComponent implements OnInit{
+  page;
+  totalPages;
+  totalResults;
   preload = true;
 
-  /* Raw Data from endpoint */
-  private _data;
-
   /* data.results */
-  public results = [];
+  results = [] ;
 
   /* additional endpoint API params.  object {key:'value',}*/
   private params = {};
-
-  /* filtered results array */
-  private filteredResult = [];
 
   /*  selected service by mat-select  */
   selectedService = 'films';
@@ -38,13 +29,14 @@ export class FilmsComponent implements OnInit, AfterViewInit {
     {value: 'actors', label: 'Актеры', service: this.personService, searchProperty: 'name'},
   ];
 
-  constructor(private filmService: FilmService, private personService: PersonService) { }
+  constructor( private filmService: FilmService, private personService: PersonService) { }
 
   /* Reset values on changing service */
   changeService(){
-    this._data = this.results = [];
-    this.params['page'] = this.page+1;
-    this.filter('');
+    this.params['page'] = 1;
+    this.params['query'] = '';
+    this.results = [];
+    this.currentService.reset();
     this.getData();
   }
 
@@ -64,12 +56,19 @@ export class FilmsComponent implements OnInit, AfterViewInit {
   }
 
   /* get data from endpoint response */
-  getData(){
-    this.currentService.getAll(this.params).subscribe(data => {
-      this._data = data;
-      this.filteredResult = this.results = this.results.concat(data['results']);
-      this.preload = false;
+  getData(search?:boolean){
+    this.preload = true;
+    this.currentService.getAll(this.params, search).subscribe(_data => {
+      this.saveData(_data);
     });
+  }
+
+  private saveData(data){
+    this.page = data['page'];
+    this.totalPages = data['total_pages'];
+    this.totalResults = data['total_results'];
+    this.results = this.results.concat(data['results']);
+    this.preload = false;
   }
 
   /* get data from next page */
@@ -78,24 +77,15 @@ export class FilmsComponent implements OnInit, AfterViewInit {
     this.getData();
   }
 
-  /* current page property of results */
-  get page(){
-    return this._data.page;
-  }
-
   /* save filtered data to filteredResult */
   filter(query) {
-    this.filteredResult = (query) ?
-      this.results.filter(
-        item => item[this.searchProperty].toLowerCase().includes(query.toLowerCase())) : this.results;
-  }
-
-  /* getter for filtered data  */
-  get filtered(){
-    return this.filteredResult;
+    this.results = []; this.params['page'] = 1;
+    this.params['query'] = query.toLowerCase();
+    query? this.getData(true): this.getData(false);
   }
 
   ngOnInit() {
+    this.preload = true;
     this.getData();
   }
 }

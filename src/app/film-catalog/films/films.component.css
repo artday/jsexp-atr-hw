@@ -33,11 +33,41 @@ mat-toolbar mat-form-field{
     margin-bottom: 3rem;
 }
 
+.loader{
+    transition: opacity 0.5s;
+    opacity: 0;
+}
+.spiner.loader{
+    opacity: 0
+}
+.spiner{
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 75px;
+    bottom: 0;
+    background: white;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation-name: hide;
+    animation-duration: .8s;
+}
+
+@keyframes hide {
+    0% {opacity: 1; z-index: 1;}
+    99% {opacity: 0; z-index: 1; }
+    100% {display: none; z-index: 0}
+}
+
+
 film-item{
     /*padding: 15px;*/
     /*padding: 24px 36px;*/
     box-sizing: border-box;
-    max-width: 33.33333%;
+    /*max-width: 33.33333%;*/
+    max-width: 25%;
     padding: 15px;
 }
 

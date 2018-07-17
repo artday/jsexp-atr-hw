@@ -1,7 +1,24 @@
 <div class="film-card">
   <mat-card>
     <span class="year">{{release_date | truncate:4:false:''}}</span>
-    <img mat-card-image src="{{indexImg}}" alt="Photo of {{title}}">
+
+    <mat-card-actions>
+      <div (click)="markToggle()" class="favorBtn">
+        <span title="Add to BookMarks"  *ngIf="!mark; else removeMark"><mat-icon >bookmark_border</mat-icon></span>
+        <ng-template #removeMark>
+          <span title="Remove from BookMarks"><mat-icon>bookmark</mat-icon></span>
+        </ng-template>
+      </div>
+
+      <div (click)="favoriteToggle()" class="favorBtn">
+        <span title="Add to favorites" *ngIf="!favorite; else removeFav"><mat-icon>favorite_border</mat-icon></span>
+        <ng-template #removeFav>
+          <span title="Remove from favorites"><mat-icon>favorite</mat-icon></span>
+        </ng-template>
+      </div>
+    </mat-card-actions>
+
+    <img mat-card-image src="{{poster}}" alt="Photo of {{title}}">
 
     <mat-card-header>
       <mat-card-title><strong>{{title}}</strong></mat-card-title>
@@ -10,8 +27,5 @@
     <mat-card-content>
       <p>{{overview | truncate:150 }}</p>
     </mat-card-content>
-
-    <mat-card-actions>
-    </mat-card-actions>
   </mat-card>
 </div>

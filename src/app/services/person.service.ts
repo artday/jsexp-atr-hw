@@ -4,9 +4,10 @@ import {DataService} from "./data.service";
 
 @Injectable()
 export class PersonService extends DataService{
+
   params = { language: 'ru-RU', sort_by: '', page: 1};
 
   constructor(http: HttpClient) {
-    super('https://api.themoviedb.org/3/person/popular', http);
+    super('person', 'https://api.themoviedb.org/3/person/popular', http);
   }
 }

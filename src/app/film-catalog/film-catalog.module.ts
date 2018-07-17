@@ -5,7 +5,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
 import {MatTabsModule} from '@angular/material/tabs';
-import {MatSelectModule, MatToolbarModule, MatInputModule} from "@angular/material";
+import {MatSelectModule, MatToolbarModule, MatInputModule, MatProgressSpinnerModule } from "@angular/material";
 import {MatIconModule} from '@angular/material/icon';
 import {SharedModule} from "../shared/shared.module";
 
@@ -20,12 +20,14 @@ import {FilmService} from "../services/film.service";
 import {PersonService} from "../services/person.service";
 import {ImageService} from "../services/image.service";
 import { SearchComponent } from './films/search/search.component';
+import {FavoriteService} from "../services/favorite.service";
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     MatCardModule,
+    MatProgressSpinnerModule,
     MatButtonModule,
     MatGridListModule,
     MatTabsModule,
@@ -44,6 +46,6 @@ import { SearchComponent } from './films/search/search.component';
     PersonItemComponent,
     SearchComponent
   ],
-  providers: [ FilmService, PersonService, ImageService ]
+  providers: [ FilmService, FavoriteService, PersonService, ImageService ]
 })
 export class FilmCatalogModule { }
