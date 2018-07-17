@@ -21,6 +21,7 @@ import {PersonService} from "../services/person.service";
 import {ImageService} from "../services/image.service";
 import { SearchComponent } from './films/search/search.component';
 import {FavoriteService} from "../services/favorite.service";
+import {AuthService} from "../services/auth.service";
 
 @NgModule({
   imports: [
@@ -46,6 +47,6 @@ import {FavoriteService} from "../services/favorite.service";
     PersonItemComponent,
     SearchComponent
   ],
-  providers: [ FilmService, FavoriteService, PersonService, ImageService ]
+  providers: [ FilmService, FavoriteService, PersonService, ImageService, AuthService ]
 })
 export class FilmCatalogModule { }

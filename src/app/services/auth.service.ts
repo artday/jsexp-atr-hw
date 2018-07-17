@@ -9,9 +9,7 @@ import 'rxjs/add/observable/of';
 import {AppUser} from "../models/app-user";
 import { map } from 'rxjs/operators';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class AuthService {
   user$: Observable<firebase.User>;
 
