@@ -10,10 +10,14 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
+import {SearchFormComponent} from "./film-catalog/search-form/search-form.component";
+import {FormsModule} from "@angular/forms";
+import {MatInputModule} from "@angular/material";
 
 @NgModule({
   declarations: [
     AppComponent,
+    SearchFormComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +26,9 @@ import {MatCardModule} from '@angular/material/card';
     BrowserAnimationsModule,
     MatToolbarModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    FormsModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,10 +1,9 @@
-import { Injectable } from '@angular/core';
+import {Inject, Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {DataService} from "./data.service";
 import {FavoriteService} from "./favorite.service";
 import { map } from 'rxjs/operators';
 import {Observable} from "rxjs";
-import {Film} from "../models/film";
 
 @Injectable()
 export class FilmService extends DataService {

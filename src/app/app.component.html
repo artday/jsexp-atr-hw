@@ -2,10 +2,12 @@
     <mat-toolbar-row>
       <span>Film Catalog</span>
       <span class="example-spacer"></span>
-      <a mat-button 
-        *ngFor="let link of links" 
-        [routerLink]="link.path" 
-        [routerLinkActive]="link.active"> 
+        <app-search-form></app-search-form>
+        <span class="example-spacer"></span>
+      <a mat-button
+        *ngFor="let link of links"
+        [routerLink]="link.path"
+        [routerLinkActive]="link.active">
         <mat-icon class="example-icon">{{link.icon}}</mat-icon>{{link.label}}
     </a>
     </mat-toolbar-row>
