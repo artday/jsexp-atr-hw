@@ -44,7 +44,7 @@ export class SearchListComponent implements OnInit {
     this.page = data['page'];
     this.totalPages = data['total_pages'];
     this.totalResults = data['total_results'];
-    this.results = data['results'];
+    this.results = this.results.concat(data['results']);
     this.preload = false;
   }
 
