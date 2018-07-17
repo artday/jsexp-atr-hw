@@ -21,6 +21,8 @@ import {PersonService} from "../services/person.service";
 import {ImageService} from "../services/image.service";
 import { SearchComponent } from './films/search/search.component';
 import {FavoriteService} from "../services/favorite.service";
+import { SearchListComponent } from './search-list/search-list.component';
+
 
 @NgModule({
   imports: [
@@ -44,7 +46,8 @@ import {FavoriteService} from "../services/favorite.service";
     TabsComponent,
     FilmItemComponent,
     PersonItemComponent,
-    SearchComponent
+    SearchComponent,
+    SearchListComponent
   ],
   providers: [ FilmService, FavoriteService, PersonService, ImageService ]
 })

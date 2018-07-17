@@ -86,6 +86,7 @@ export class FilmsComponent implements OnInit{
 
   ngOnInit() {
     this.preload = true;
+    this.changeService();
     this.getData();
   }
 }

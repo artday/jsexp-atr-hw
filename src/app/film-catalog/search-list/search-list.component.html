@@ -1,0 +1,22 @@
+<div class="container">
+
+  <div class="row spiner"  [ngClass]="{'loader': !preload}">
+    <mat-spinner></mat-spinner>
+    <!--<img  src="https://www.themoviedb.org/stylesheets/kendo-2018.1.221/Material/rolling-24px.svg">-->
+  </div>
+
+  <ng-template #noResult><div class="row" ><p>По вашему запросу ничего не найдено...</p></div></ng-template>
+  <section *ngIf="results.length; else noResult" [ngClass]="{'loader': preload }">
+    <div class="row">
+      <film-item [data]="film" *ngFor="let film of results"></film-item>
+    </div>
+
+
+    <div class="row">
+      <button mat-raised-button color="primary" (click)="getNextPage()"
+              [disabled]="!((totalPages - page)>0)">
+        Показать еще
+      </button>
+    </div>
+  </section>
+</div>
