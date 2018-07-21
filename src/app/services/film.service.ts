@@ -29,7 +29,7 @@ export class FilmService extends DataService {
 
       this.favService.getFavorites()
         .subscribe(f=> {
-          let favIds = f.map( f=> f.id );
+          let favIds = f.map( f=> f['id'] );
           data['results'] = data['results'].map(film => {
             film.favorite = favIds.includes(film.id);
             return film;
